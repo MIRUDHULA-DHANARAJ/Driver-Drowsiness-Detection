@@ -1,146 +1,126 @@
-# 🧠 Driver Drowsiness Detection using Deep Learning
+# 🧠 Driver Drowsiness Detection System
+### Real-time AI-powered Fatigue Monitoring using Deep Learning & Transfer Learning
 
-## 📌 Overview
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://www.tensorflow.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B.svg)](https://streamlit.io/)
 
-Driver fatigue is a major cause of road accidents due to reduced alertness, slower reaction time, and impaired decision-making.
-This project implements a **vision-based, non-intrusive driver monitoring system** that detects drowsiness using facial cues such as **eye closure and yawning**.
+## 🚀 Overview
+Driver fatigue is a major contributor to road accidents globally due to delayed reaction time and reduced attention. This project presents an end-to-end AI system that detects driver drowsiness using facial cues such as eye closure and yawning.
 
----
-
-## 🎯 Problem Statement
-
-Traditional fatigue detection systems rely on vehicle behavior or wearable sensors, which are often unreliable or intrusive.
-This project aims to build a **deep learning-based solution** that can identify early signs of fatigue using image data.
+The system combines **Deep Learning classification**, **Rule-based reasoning**, and **Temporal fatigue analysis** to deliver interpretable and real-time insights.
 
 ---
 
-## 🛠️ Approach
-
-### 🔹 Data Processing
-
-* Dataset contains 4 classes:
-
-  * `Closed`
-  * `Open`
-  * `no_yawn`
-  * `yawn`
-* Images resized to **224×224**
-* Normalization applied (0–1 scaling)
-* Data augmentation:
-
-  * Horizontal flip
-  * Rotation
-  * Zoom
-  * Brightness variation
+## 🎯 Key Highlights
+*   **Dual-model architecture:** Comparison between a Custom CNN and MobileNetV2.
+*   **4-Class Detection:** Detects Eye state (Open/Closed) + Yawning state (Yawn/No Yawn).
+*   **Rule-based Fatigue Mapping:** A 3-stage logic system (Alert, Mild, Severe).
+*   **Temporal Tracking:** Analyzes fatigue progression over time rather than just static frames.
+*   **Interactive Dashboard:** Built with Streamlit for real-time visualization and analytics.
 
 ---
 
-### 🔹 Model Development
-
-#### 1. Custom CNN
-
-* Multiple convolutional layers with batch normalization
-* Feature extraction from scratch
-* Fully connected classification head
-
-#### 2. MobileNetV2 (Transfer Learning)
-
-* Pretrained on ImageNet
-* Base model frozen initially
-* Fine-tuned with low learning rate
+## 🏗️ System Architecture
+1.  **Input Image:** Preprocessing (Resize to $224 \times 224$, Normalization).
+2.  **Model Inference:** MobileNetV2 / CNN prediction across 4 classes.
+3.  **Rule Engine:** Maps predictions to fatigue levels.
+4.  **Temporal Aggregation:** Groups predictions into time windows to create a **Fatigue Progression Curve**.
+5.  **Visualization:** Streamlit UI displays current state and historical trends.
 
 ---
 
-### 🔹 Decision Fusion Logic
-
-Model predictions (4 classes) are mapped into **3 fatigue levels**:
-
-| Prediction     | Fatigue Level         |
-| -------------- | --------------------- |
-| Open / no_yawn | 🟢 Alert (0)          |
-| yawn           | 🟡 Mild Fatigue (1)   |
-| Closed         | 🔴 Severe Fatigue (2) |
-
----
-
-### 🔹 Fatigue Progression Analysis
-
-* Predictions are grouped into **time intervals**
-* Majority voting used to determine fatigue level per interval
-* A **fatigue progression curve** is generated to track changes over time
-* Transition points (Alert → Mild → Severe) are identified
+## 📂 Dataset Description
+*   **Source:** Public facial drowsiness dataset.
+*   **Classes:** `Closed`, `Open`, `no_yawn`, `yawn`.
+*   **Preprocessing:**
+    *   Resize: $224 \times 224$
+    *   Normalization: $[0, 1]$
+    *   Augmentation: Flip, Rotation, Zoom, Brightness.
+    *   Split: 70% Train / 15% Val / 15% Test.
 
 ---
 
-## 📊 Results
+## 🤖 Model Architecture & Performance
 
-* MobileNetV2 outperformed Custom CNN
-* Better generalization due to pretrained features
-* Reliable detection of eye closure (Severe fatigue)
-* Minor confusion observed between `yawn` and `no_yawn`
+### 1. Custom CNN (Baseline)
+*   4 Convolutional Blocks + Batch Normalization.
+*   Global Average Pooling & Fully Connected Layer.
+*   **Accuracy:** ~25% (Used as a starting point).
 
----
+### 2. MobileNetV2 (Final Model)
+*   Pretrained on ImageNet (Transfer Learning).
+*   Frozen base layers for feature extraction; fine-tuned top layers.
+*   **Accuracy:** **~91%** (Lightweight and deployment-ready).
 
-## 📈 Key Features
-
-* ✅ Non-intrusive fatigue detection system
-* ✅ Deep learning-based image classification
-* ✅ Rule-based fatigue level mapping
-* ✅ Time-based fatigue progression tracking
-* ✅ Transition detection for early warnings
-
----
-
-
-## 🚀 Future Improvements
-
-* Integrate real-time webcam detection using OpenCV
-* Use temporal models (LSTM/GRU) for sequence learning
-* Deploy as a real-time driver monitoring system
+| Model | Accuracy | Notes |
+| :--- | :--- | :--- |
+| Custom CNN | ~25% | Baseline model |
+| **MobileNetV2** | **~91%** | **Best performing & optimized** |
 
 ---
 
-## 🧰 Tech Stack
+## ⚙️ Fatigue Decision Logic
 
-* Python
-* TensorFlow / Keras
-* NumPy
-* Matplotlib
-* Scikit-learn
+| Prediction Class | Fatigue Level | Status |
+| :--- | :--- | :--- |
+| Open / No_yawn | 0 | 🟢 **Alert** |
+| Yawn | 1 | 🟡 **Mild** |
+| Closed | 2 | 🔴 **Severe** |
 
 ---
 
-## 📂 Project Structure
+## 📷 Dashboard Preview
+The **Streamlit Dashboard** consists of:
+*   **Home Page:** Project overview and documentation.
+*   **Prediction Interface:** Upload/capture images for real-time inference.
+*   **Analytics Dashboard:** Visualizing fatigue transitions (Alert → Mild → Severe) via Plotly.
 
-```
+---
+
+## 🖥️ Run Locally
+
+1. **Clone Repository**
+   ```bash
+   git clone [https://github.com/your-username/Driver-Drowsiness-Detection.git](https://github.com/your-username/Driver-Drowsiness-Detection.git)
+   cd Driver-Drowsiness-Detection
+
+2. **Install Dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   Run Streamlit App
+   
+3. **Run Streamlit App**
+   ```bash
+   streamlit run drowsiness_dashboard.py
+---
+
+## 🧩 Tech Stack
+*   **Deep Learning:** TensorFlow / Keras
+*   **Data Science:** NumPy, Scikit-learn, Pandas
+*   **Visualization:** Matplotlib, Plotly, Streamlit
+*   **Computer Vision:** OpenCV
+
+---
+
+## 📁 Project Structure
+```text
 Driver-Drowsiness-Detection/
 │
-├── drowsiness_detection.ipynb
-├── README.md
-└── requirements.txt
+├── drowsiness_detection.ipynb    # Training & Evaluation Notebook
+├── drowsiness_dashboard.py      # Streamlit Application
+├── assets/                      # UI Images & Icons
+│   ├── home.png
+│   ├── prediction.png
+│   └── analytics.png
+├── requirements.txt             # Dependencies
+└── README.md                    # Project Documentation
 ```
-
 ---
+👩‍💻 Author
+Mirudhula D
 
-## ▶️ How to Run
-
-1. Open the notebook in **Google Colab**
-2. Install required libraries:
-
-   ```
-   pip install -r requirements.txt
-   ```
-3. Run all cells step-by-step
-
----
-
-## 📌 Conclusion
-
-This project demonstrates how deep learning can be applied to build a **practical driver safety system**.
-By combining image classification with temporal analysis, it provides a **more reliable and interpretable fatigue detection mechanism**.
-
----
-
-## 👩‍💻 Author
-
-**Mirudhula D**
+B.Tech Artificial Intelligence & Data Science
+--- 
+Final Note: This project demonstrates a complete end-to-end AI product pipeline: from dataset processing and model training to a deployment-ready analytical dashboard.
