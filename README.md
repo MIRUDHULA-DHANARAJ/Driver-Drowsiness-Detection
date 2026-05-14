@@ -116,9 +116,10 @@ Driver-Drowsiness-Detection/
 │   └── analytics.png
 ├── requirements.txt             # Dependencies
 └── README.md                    # Project Documentation
-
-👩‍💻 Author
+```
+---
+**👩‍💻 Author**
 Mirudhula D
-
 B.Tech Artificial Intelligence & Data Science
-Final Note: This project demonstrates a complete end-to-end AI product pipeline: from dataset processing and model training to a deployment-ready analytical dashboard.
+---
+**Final Note:** This project demonstrates a complete end-to-end AI product pipeline: from dataset processing and model training to a deployment-ready analytical dashboard.
