@@ -73,7 +73,7 @@ The system combines **Deep Learning classification**, **Rule-based reasoning**, 
 ## 📷 Dashboard Preview
 The **Streamlit Dashboard** consists of:
 *   **Home Page:** Project overview and documentation.
-*   
+    
   <img width="1356" height="633" alt="home" src="https://github.com/user-attachments/assets/7c7760d0-34c0-4fed-b267-6b43f2893520" />
 
 *   **Prediction Interface:** Upload/capture images for real-time inference.
@@ -128,8 +128,10 @@ Driver-Drowsiness-Detection/
 ```
 ---
 ## 👩‍💻 Author
+
 Mirudhula D
 
 B.Tech Artificial Intelligence & Data Science
+
 ---
 **Final Note:** This project demonstrates a complete end-to-end AI product pipeline: from dataset processing and model training to a deployment-ready analytical dashboard.
