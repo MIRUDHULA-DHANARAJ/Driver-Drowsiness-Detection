@@ -73,8 +73,17 @@ The system combines **Deep Learning classification**, **Rule-based reasoning**, 
 ## 📷 Dashboard Preview
 The **Streamlit Dashboard** consists of:
 *   **Home Page:** Project overview and documentation.
+*   
+  <img width="1356" height="633" alt="home" src="https://github.com/user-attachments/assets/7c7760d0-34c0-4fed-b267-6b43f2893520" />
+
 *   **Prediction Interface:** Upload/capture images for real-time inference.
+
+  <img width="1364" height="632" alt="prediction" src="https://github.com/user-attachments/assets/def75d56-3fb5-497e-aff8-1bdca26d5501" />
+   
 *   **Analytics Dashboard:** Visualizing fatigue transitions (Alert → Mild → Severe) via Plotly.
+
+  <img width="1357" height="636" alt="analytics" src="https://github.com/user-attachments/assets/2c555ba1-7ce9-4297-8a61-4cee341e73dd" />
+
 
 ---
 
@@ -118,7 +127,7 @@ Driver-Drowsiness-Detection/
 └── README.md                    # Project Documentation
 ```
 ---
-**👩‍💻 Author**
+## 👩‍💻 Author
 Mirudhula D
 B.Tech Artificial Intelligence & Data Science
 ---
