@@ -116,7 +116,7 @@ Driver-Drowsiness-Detection/
 │   └── analytics.png
 ├── requirements.txt             # Dependencies
 └── README.md                    # Project Documentation
-```
+
 👩‍💻 Author
 Mirudhula D
 
